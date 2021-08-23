@@ -197,7 +197,7 @@ def print_res
   @res.each do |name|
     puts "#{name[:id]}. #{name[:name]}\nLocation: #{name[:location][:city]}, #{name[:location][:state]}\nDoes Delivery: #{name[:delivery]}\nDays Open: #{name[:days_open].upcase}\nLikes Count: #{name[:likes]}\nMenu:"
     res_dish = name[:dishes].each_with_index do |items, dish_num|
-      puts "  #{dish_num+1}. #{items[:name]} has : \n"
+      puts "  #{dish_num+1}. #{items[:name]} Price. $#{items[:price]} has : \n"
       ingred = items[:ingredients].each do |y|
         puts "    #{y}"
       end 
@@ -273,10 +273,22 @@ def create_res_everything(new_res,res_name,res_city,res_state,res_del_status,res
   ]
 }
 end
-create_res_everything("res3","Lard Lad Donuts","Springfield","Some State in the US","Yes","MON,TUES,WED,THUR,FRI,SUN,","5000","Donuts", 5.50 ,"Flour(Self-Raising)","Buttermilk", 3,"Homer S", 5)
+create_res_everything("res3","Lard Lad Donuts","Springfield","Some State in the US","Yes","MON,TUES,WED,THUR,FRI,SUN,",5000,"Donuts", 5.50 ,"Flour(Self-Raising)","Buttermilk", 3,"Homer S", 5)
 print_res
 
-#      a simple that takes restaurants and updates that to your array
+# a simple that takes restaurants and updates that to your array
+
+
 # loop through your restaurants and return those with likes > 500 (select/filter)
+
+@likes = []
+@res.each_with_index do |resnum,ind|
+  @likes[ind] = (resnum[:likes])
+end
+
+more_than_500 = @likes.select{|likes| likes > 500}
+p @arr
 # I want to think of ideas simple/hard and through them in slack
+# Ruby code for Hash.select() method
+
 
