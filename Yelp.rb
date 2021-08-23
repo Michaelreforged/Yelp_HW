@@ -274,10 +274,34 @@ def create_res_everything(new_res,res_name,res_city,res_state,res_del_status,res
 }
 end
 create_res_everything("res3","Lard Lad Donuts","Springfield","Some State in the US","Yes","MON,TUES,WED,THUR,FRI,SUN,",5000,"Donuts", 5.50 ,"Flour(Self-Raising)","Buttermilk", 3,"Homer S", 5)
-print_res
+
 
 # a simple that takes restaurants and updates that to your array
 
+
+def update_res_everything(res_update,res_name,res_city,res_state,res_del_status,res_days_open,res_likes,res_food_name,res_food_price,res_food_ingred_1,res_food_ingred_2,res_revi_uid,res_revi_id,res_revi_rating) # if we were taking user input there would be less variables and would have loops in the code to take in user input and add the data in, 
+  index_for_res = @res.find_index(res_update)
+  id_update = index_for_res + 1
+  @res[index_for_res] = {
+  id: id_update,
+  name: res_name,
+  location: {
+    city: res_city,
+    state: res_state,
+  },
+  delivery: res_del_status,
+  days_open: res_days_open,
+  likes: res_likes,
+  dishes: [
+    { name: res_food_name, price: res_food_price, ingredients: [res_food_ingred_1, res_food_ingred_2] }
+  ],
+  reviews: [
+    { user_id: res_revi_id, id: res_revi_uid, rating: res_revi_rating }
+  ]
+}
+end
+update_res_everything(res2,"Albertas","SLC","Utah","Yes","MON,TUES,WED,THUR,FRI,SAT,SUN,",350,"Buritos", 10.50 ,"Tortilla","Meat", 4,"Jimmy", 4)
+print_res
 
 # loop through your restaurants and return those with likes > 500 (select/filter)
 
