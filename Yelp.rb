@@ -283,11 +283,16 @@ print_res
 
 @likes = []
 @res.each_with_index do |resnum,ind|
-  @likes[ind] = (resnum[:likes])
+  @likes[ind] = { likes: resnum[:likes], name: resnum[:name]}
 end
 
-more_than_500 = @likes.select{|likes| likes > 500}
-p @arr
+@more_than = []
+@likes.each do |more|
+  @more_than.push(more.select{ |k| more[:likes] > 500})
+  @more_than.delete({}) 
+end
+
+p @more_than
 # I want to think of ideas simple/hard and through them in slack
 # Ruby code for Hash.select() method
 
